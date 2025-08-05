@@ -17,6 +17,7 @@ statemachine目录存放状态机的核心代码，simpleTest目录演示了一�
  该示例的状态机框架如下图所示：
 
  <img width="1510" height="745" alt="image" src="https://github.com/user-attachments/assets/55c7f3fc-9023-4b85-8ec1-80eb8b2e2052" />
+
 外部通过调用StateMachine对象的start和stop方法来启停状态机，调用start方法时，状态机会运行work state中的子状态，子状态都有自己的标签，StateGetJob的标签为"get job",
 StateDoJob的标签为"do job",StateFinish的标签为"finish job"，状态机通过判断标签来确定下一个运行的状态，实现状态之间的切换。调用stop方法时，不论状态机处于何种状态，
 会立刻进入StateStop状态，该状态的onEntry函数可以做一些异常处理操作。
@@ -42,7 +43,7 @@ void postEvent(std::string eventP, std::string paraP = "")
 
 **状态机注意要点：**
 
-(1)至少有一个父状态，子状态需要向父状态注册，子状态依赖父状态，父状态是子状态的载体
+(1)至少有一个父状态，子状态需要向父状态注册，父状态是子状态的载体
 
 (2)子状态的onEntry方法必须调用一次postEvent函数，告诉状态机下一个运行的状态，如果是自己，那么在onLoop方法中要继续调用postEvent函数，如果忘记调用postEvent，状态机不知道下一个运行的状态，会提示错误
 
@@ -61,6 +62,10 @@ void postEvent(std::string eventP, std::string paraP = "")
  该示例的状态机框架如下图所示：
  <img width="1505" height="704" alt="image" src="https://github.com/user-attachments/assets/cbb3c58f-9ee6-4940-88ea-2117ca364be9" />
  该示例展示了两个父状态的运行情况，父状态之间切换是通过调用StateMachine对象的transferState函数实现的，该函数接收一个参数，即要跳转的父状态的标签，在该示例中work state的标签是"work state",
- charge state的标签是"charge state"
+ charge state的标签是"charge state"。
+
+ 状态机启动时，需要确定运行于哪个父状态，这是通过调用StateMachine对象的setInitState方法实现的，该方法接收一个参数，即父状态的标签。
+ 
+ 父状态运行时，也需要确定先运行哪个子状态，通过调用父状态的setInitState方法，传入该父状态下的某个子状态标签实现。
 
 
