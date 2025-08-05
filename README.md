@@ -23,15 +23,16 @@ simpleTest目录下main.cpp中有完整的代码注释，这里对每个用户�
 
 **用户的子状态类需要继承State基类，并覆盖基类中的3个方法：**
 
-void onEntry(std::string paraP);  //该方法会在进入该状态时被调用，即从其他状态跳转到该状态，可以做一些初始化操作，paraP是从上一个状态传递过来的信息
+void onEntry(std::string paraP);  //该方法在进入该状态时被调用，即从其他状态跳转到该状态，可以做一些初始化操作，paraP是从上一个状态传递过来的信息
 
 void onLoop();                    //该方法是该状态的自循环函数，可以被执行多次
 
-void onExit();                    //该方法是退出该状态时被调用，可以做一些清理操作
+void onExit();                    //该方法在退出该状态时被调用，可以做一些清理操作
 
-从一个子状态跳转到另一个子状态时，需要调用父状态的postEvent方法，该方法原型如下：
+想从一个子状态跳转到另一个子状态，需要调用父状态的postEvent方法，该方法原型如下：
 
 void postEvent(std::string eventP, std::string paraP = "")
 
 其中eventP参数是跳转到目标状态的“标签”, paraP参数是需要给下一个状态传递的自定义信息，默认为空
+
 
