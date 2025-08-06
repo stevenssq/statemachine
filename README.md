@@ -16,8 +16,7 @@ statemachine目录存放状态机的核心代码，simpleTest目录演示了一�
  
  该示例的状态机框架如下图所示：
 
-<img width="994" height="525" alt="image" src="https://github.com/user-attachments/assets/386235cf-7072-47ba-aa2c-3648acb358a2" />
-
+<img width="944" height="497" alt="image" src="https://github.com/user-attachments/assets/dd6f2928-8cb4-49ef-b42d-e757de9caa80" />
 
 外部通过调用StateMachine对象的start和stop方法来启停状态机，调用start方法时，状态机会运行work state中的子状态，子状态都有自己的标签，StateGetJob的标签为"get job",
 StateDoJob的标签为"do job",StateFinish的标签为"finish job"，状态机通过判断下一个状态的标签来实现状态之间的转换。调用stop方法时，不论状态机处于何种状态，
