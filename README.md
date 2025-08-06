@@ -16,7 +16,8 @@ statemachine目录存放状态机的核心代码，simpleTest目录演示了一�
  
  该示例的状态机框架如下图所示：
 
- <img width="1510" height="745" alt="image" src="https://github.com/user-attachments/assets/55c7f3fc-9023-4b85-8ec1-80eb8b2e2052" />
+<img width="994" height="525" alt="image" src="https://github.com/user-attachments/assets/386235cf-7072-47ba-aa2c-3648acb358a2" />
+
 
 外部通过调用StateMachine对象的start和stop方法来启停状态机，调用start方法时，状态机会运行work state中的子状态，子状态都有自己的标签，StateGetJob的标签为"get job",
 StateDoJob的标签为"do job",StateFinish的标签为"finish job"，状态机通过判断下一个状态的标签来实现状态之间的转换。调用stop方法时，不论状态机处于何种状态，
@@ -60,7 +61,8 @@ void postEvent(std::string eventP, std::string paraP = "")
  make && ./fullfsm
  
  该示例的状态机框架如下图所示：
- <img width="1505" height="704" alt="image" src="https://github.com/user-attachments/assets/cbb3c58f-9ee6-4940-88ea-2117ca364be9" />
+ <img width="961" height="446" alt="image" src="https://github.com/user-attachments/assets/ef4242c6-6a8e-481a-80e9-f09f198c2081" />
+
  该示例展示了两个父状态的运行情况，父状态之间切换是通过调用StateMachine对象的transferState函数实现的，该函数接收一个参数，即要跳转的父状态的标签，在该示例中work state的标签是"work state",
  charge state的标签是"charge state"。
 
