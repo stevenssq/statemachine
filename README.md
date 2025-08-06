@@ -47,7 +47,7 @@ void postEvent(std::string eventP, std::string paraP = "")
 
 (2)子状态的onEntry方法必须调用一次postEvent函数，告诉状态机下一个运行的状态，如果是自己，那么在onLoop方法中要继续调用postEvent函数，如果忘记调用postEvent，状态机不知道下一个运行的状态，会提示错误
 
-(3)不要在子状态中死循环或者阻塞，会占用状态机内部线程，导致外部无法启停状态机或进行父状态切换
+(3)不要在子状态中死循环或者阻塞，会占用状态机内部线程，导致外部无法启停状态机或进行父状态切换，可以用onLoop方法替代阻塞
 
 **2.fullTest**
 
