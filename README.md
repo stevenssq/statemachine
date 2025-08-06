@@ -19,8 +19,8 @@ statemachine目录存放状态机的核心代码，simpleTest目录演示了一�
  <img width="1510" height="745" alt="image" src="https://github.com/user-attachments/assets/55c7f3fc-9023-4b85-8ec1-80eb8b2e2052" />
 
 外部通过调用StateMachine对象的start和stop方法来启停状态机，调用start方法时，状态机会运行work state中的子状态，子状态都有自己的标签，StateGetJob的标签为"get job",
-StateDoJob的标签为"do job",StateFinish的标签为"finish job"，状态机通过判断标签来确定下一个运行的状态，实现状态之间的切换。调用stop方法时，不论状态机处于何种状态，
-会立刻进入StateStop状态，该状态的onEntry函数可以做一些异常处理操作。
+StateDoJob的标签为"do job",StateFinish的标签为"finish job"，状态机通过判断下一个状态的标签来实现状态之间的转换。调用stop方法时，不论状态机处于何种状态，
+都会立刻进入StateStop状态，该状态的onEntry函数可以做一些异常处理操作。
 
 simpleTest目录下main.cpp中有完整的代码注释，下面是补充说明：
 
